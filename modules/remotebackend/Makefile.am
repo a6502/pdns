@@ -42,6 +42,7 @@ libremotebackend_la_SOURCES = \
 	unixconnector.cc \
 	httpconnector.cc \
 	pipeconnector.cc \
+	udpconnector.cc \
 	zmqconnector.cc
 
 libremotebackend_la_LDFLAGS = -module -avoid-version

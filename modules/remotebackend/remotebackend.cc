@@ -149,6 +149,8 @@ int RemoteBackend::build() {
 #endif
       } else if (type == "pipe") {
         this->connector = new PipeConnector(options);
+      } else if (type == "udp") {
+        this->connector = new UdpsocketConnector(options);
       } else {
         throw PDNSException("Invalid connection string: unknown connector");
       }

@@ -59,6 +59,23 @@ class UnixsocketConnector: public Connector {
     int timeout;
 };
 
+class UdpsocketConnector: public Connector {
+  public:
+    UdpsocketConnector(std::map<std::string,std::string> options);
+    virtual ~UdpsocketConnector();
+    virtual int send_message(const rapidjson::Document &input);
+    virtual int recv_message(rapidjson::Document &output);
+  private:
+    ssize_t read(std::string &data);
+    ssize_t write(const std::string &data);
+    void reconnect();
+    std::map<std::string,std::string> options;
+    int fd;
+    std::string address;
+    bool connected;
+    int timeout;
+};
+
 class HTTPConnector: public Connector {
   public:
 
